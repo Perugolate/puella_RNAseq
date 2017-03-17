@@ -1,4 +1,4 @@
-# *Coenagrion puella* differential expression with `kallisto`/`R`/`DESeq2`
+# *Coenagrion puella* differential expression
 
 - [Transcript quantification with `kallisto`](#transcript-quantification-with-kallisto)
 - [Read in data and create sample descriptions](#read-in-data-and-create-sample-descriptions)
@@ -74,7 +74,7 @@ dev.off()
 
 ## Regularized log transformation and PCA
 
-Here I'm assuming that `fitType = "local"` will be the best but change this if necessary. Use this plot to determine how many PC's to keep.
+Went with `fitType = "local"`.
 
 ```r
 # use regularized log transformation prior to PCA
@@ -82,10 +82,14 @@ rld <- rlog(dds, fitType = "local")
 rldf <- assay(rld) %>% as.data.frame
 pca <- prcomp(t(rldf))
 # scree plot of PCs
+png("plots/scree.png")
 plot(pca)
+dev.off()
 ```
 
-I'm assuming that the first three will be enough, increase if necessary.
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/scree.png)
+
+First three PCs.
 
 ```r
 pcax <- as.data.frame(pca$x)
@@ -104,15 +108,19 @@ pc13 <- ggplot(pcax, aes(x=PC1, y=PC3, colour=treatment)) + geom_point(size=5) +
 pc23 <- ggplot(pcax, aes(x=PC2, y=PC3, colour=treatment)) + geom_point(size=5) +
   xlab(paste("PC2: ", round(prop[2]), "% variance", sep = "")) +
   ylab(paste("PC3: ", round(prop[3]), "% variance", sep = "")) +
-  theme(legend.justification=c(1,0), legend.position=c(1,0))
+  theme(legend.justification=c(1,1), legend.position=c(1,1))
+png("plots/pca.png", width = 3 * 480)
 plot_grid(pc12, pc13, pc23, nrow = 1)
+dev.off()
 ```
 
-Have a look at the loadings to see there are a few genes that load highly (more likely many genes with modest loadings).
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/pca.png)
+
 
 ```r
 # extract loadings with rownames as a variable
 rot <- as.data.frame(pca$rotation) %>% rownames_to_column
+png("plots/lod.png", width = 3 * 480)
 par(mfrow = c(1, 3))
 plot(rot$PC1, xlab = "", xaxt = "n", ylab = "PC1 loading")
 abline(h = 0)
@@ -123,7 +131,10 @@ title("B. PC2")
 plot(rot$PC3, xlab = "", xaxt = "n", ylab = "PC3 loading")
 title("C. PC3")
 abline(h = 0)
+dev.off()
 ```
+
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/lod.png)
 
 ## Results
 
