@@ -164,3 +164,8 @@ write_csv(wnd_full, "wnd_full.csv")
 write_csv(wnd_full, "imm_full.csv")
 write_csv(wnd_full, "imm_wnd.csv")
 ```
+
+You might want to play about with these a bit though because the results are a bit different from the those in the paper. E.g. here PO/GNBP1 are not called as differentially expressed (although their counts don't look too bad):
+
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/eg.png)
+
