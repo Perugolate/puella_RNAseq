@@ -169,3 +169,17 @@ You might want to play about with these a bit though because the results are a b
 
 ![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/eg.png)
 
+Others are unchanged. E.g. the defensin:
+
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/defensin.png)
+
+I also put the refseq blast output in this repo:
+
+```sh
+grep comp88010_c0 c_puella.outfmt6
+```
+
+```
+comp88010_c0_seq1       gi|242002922|ref|XP_002436104.1|        75.68   37      9       0       101     211    3
+7       73      antimicrobial peptide, putative [Ixodes scapularis]     6945    Ixodes scapularis       1e-13
+```
