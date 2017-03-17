@@ -61,11 +61,13 @@ ddp <- DESeq(dds, parallel = TRUE, fitType = "parametric")
 In most cases `fitType = "local"` looks best. There is a third option `fitType = "mean"` which is not appropriate here. Compare the two types of fit:
 
 ```r
+png("plots/disp_ests.png", width = 2 * 480)
 par(mfrow = c(1, 2))
 plotDispEsts(dds)
 title("local")
 plotDispEsts(ddp)
 title("parametric")
+dev.off()
 ```
 
 ## Regularized log transformation and PCA
