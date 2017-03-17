@@ -136,11 +136,17 @@ dev.off()
 
 ## Results
 
-Extract results. Since the only variable is a factor with two levels it is straightforward to extract the results. For more complex models (like the one you will fit for *N. castaneus*) there will be additional arguments to the `results` function.
-
 ```r
-# adjust ylim as needed
-plotMA(results(dds, alpha = 0.05, addMLE = TRUE), ylim = c(-8, 8))
-# convention filters on > 2-fold change
-res <- results(dds, alpha = 0.05, addMLE = TRUE) %>% subset(padj < 0.05 & abs(log2FoldChange) > 1)
+wnd_full <- results(dds, alpha = 0.05, tidy = TRUE, addMLE = TRUE,
+  contrast = c("treatment", "wnd", "full")) %>%
+  subset(padj < 0.05 & abs(log2FoldChange) > 1)
+imm_full <- results(dds, alpha = 0.05, tidy = TRUE, addMLE = TRUE,
+  contrast = c("treatment", "imm", "full")) %>%
+  subset(padj < 0.05 & abs(log2FoldChange) > 1)
+imm_wnd  <- results(dds, alpha = 0.05, tidy = TRUE, addMLE = TRUE,
+  contrast = c("treatment", "imm", "wnd")) %>%
+  subset(padj < 0.05 & abs(log2FoldChange) > 1)
+write_csv(wnd_full, "wnd_full.csv")
+write_csv(wnd_full, "imm_full.csv")
+write_csv(wnd_full, "imm_wnd.csv")
 ```
