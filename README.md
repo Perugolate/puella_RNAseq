@@ -52,8 +52,8 @@ sampleTable <- dplyr::select(sampleTable, -library, -replicate)
 
 ```r
 dds <- DESeqDataSetFromTximport(txi, sampleTable, ~ treatment)
-dds <- DESeq(dds, parallel = TRUE, fitType = "local")
-ddp <- DESeq(dds, parallel = TRUE, fitType = "parametric")
+dds <- DESeq(dds, parallel = FALSE, fitType = "local")
+ddp <- DESeq(dds, parallel = FALSE, fitType = "parametric")
 ```
 
 ### Choose a dispersion fit
@@ -69,6 +69,8 @@ plotDispEsts(ddp)
 title("parametric")
 dev.off()
 ```
+
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/disp_ests.png)
 
 ## Regularized log transformation and PCA
 
