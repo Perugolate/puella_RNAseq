@@ -1,0 +1,9 @@
+{
+	"n_targets": 210637,
+	"n_bootstraps": 0,
+	"n_processed": 26220350,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Fri Mar 17 13:31:52 2017",
+	"call": "kallisto quant -i /media/tera5/puella/c_puella.fasta.kallisto_idx -o imm_2 /media/tera5/puella/imm2_1.fastq /media/tera5/puella/imm2_2.fastq"
+}

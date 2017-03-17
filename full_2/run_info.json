@@ -1,0 +1,9 @@
+{
+	"n_targets": 210637,
+	"n_bootstraps": 0,
+	"n_processed": 25160020,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Fri Mar 17 11:22:36 2017",
+	"call": "kallisto quant -i /media/tera5/puella/c_puella.fasta.kallisto_idx -o full_2 /mnt/windows_share/MITARBEITER/paul_johnston/puella_illumina/20120420_RawData_NG-6049-B_full2_lib11324_1_sequence.fastq /mnt/windows_share/MITARBEITER/paul_johnston/puella_illumina/20120420_RawData_NG-6049-B_full2_lib11324_2_sequence.fastq"
+}

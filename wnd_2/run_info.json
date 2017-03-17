@@ -1,0 +1,9 @@
+{
+	"n_targets": 210637,
+	"n_bootstraps": 0,
+	"n_processed": 30714717,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Fri Mar 17 13:10:07 2017",
+	"call": "kallisto quant -i /media/tera5/puella/c_puella.fasta.kallisto_idx -o wnd_2 /media/tera5/puella/20120420_RawData_NG-6049-B_wound2_lib11322_1_sequence.fastq /media/tera5/puella/20120420_RawData_NG-6049-B_wound2_lib11322_2_sequence.fastq"
+}
