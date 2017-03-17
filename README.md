@@ -137,6 +137,20 @@ dev.off()
 ## Results
 
 ```r
+png("plots/ra.png", width = 3 * 480)
+par(mfrow = c(1, 3))
+plotMA(results(dds, alpha = 0.05, contrast = c("treatment", "wnd", "full")),
+  ylim = c(-5, 5), main = "wounded v full control")
+plotMA(results(dds, alpha = 0.05, contrast = c("treatment", "imm", "full")),
+  ylim = c(-5, 5), main = "immune-challenged v full control")
+plotMA(results(dds, alpha = 0.05, contrast = c("treatment", "imm", "wnd")),
+  ylim = c(-5, 5), main = "immune-challenged v wounded")
+dev.off()
+```
+
+![](https://github.com/Perugolate/puella_RNAseq/blob/master/plots/ra.png)
+
+```r
 wnd_full <- results(dds, alpha = 0.05, tidy = TRUE, addMLE = TRUE,
   contrast = c("treatment", "wnd", "full")) %>%
   subset(padj < 0.05 & abs(log2FoldChange) > 1)
